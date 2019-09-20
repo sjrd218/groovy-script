@@ -1,0 +1,36 @@
+version = '0.1.0'
+defaultTasks 'clean','build'
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'idea'
+sourceCompatibility = 1.8
+ext.rundeckPluginVersion= '2.0'
+ext.rundeckVersion= '3.0.x'
+
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.rundeck:rundeck-core:3.1.0+'
+    compile "org.codehaus.groovy:groovy-all:2.4.15"
+
+    testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
+}
+
+ext.pluginClassNames='com.plugin.groovyscript.GroovyScriptStepPlugin'
+jar {
+    manifest {
+        attributes 'Rundeck-Plugin-Classnames': pluginClassNames
+        attributes 'Rundeck-Plugin-File-Version': version
+        attributes 'Rundeck-Plugin-Name': 'Groovy Script'
+        attributes 'Rundeck-Plugin-Description': 'Executes a groovy script as part of a Rundeck workflow.'
+        attributes 'Rundeck-Plugin-Rundeck-Compatibility-Version': '3.1.x'
+        attributes 'Rundeck-Plugin-Tags': 'java,workflow,step'
+        attributes 'Rundeck-Plugin-Version': rundeckPluginVersion, 'Rundeck-Plugin-Archive': 'true'
+    }
+
+}
+
