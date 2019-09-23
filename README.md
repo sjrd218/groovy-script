@@ -1,6 +1,6 @@
-# Groovy Script Rundeck Plugin
+# Groovy Script Rundeck Plugins
 
-This is a Rundeck workflow step plugin that can run Groovy scripts.
+This plugin bundle contains a Rundeck workflow step plugin and a node step plugin that can run Groovy scripts.
 
 ## Build and install
 
@@ -31,3 +31,11 @@ context : PluginStepContext - the context object passed to the plugin
 If the groovy script you write fails your step will fail
 with a `Groovy script failed` message. Re-run the job with debugging turned
 on and you will get the full stacktrace detailing why the script failed.
+
+### Node Step Plugin
+
+Add a workflow node step using this plugin - `Groovy Script Node Step`.
+
+The node step plugin also contains the following variable:
+
+```node : INodeEntry - the current node for which the script is executing```

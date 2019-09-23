@@ -20,7 +20,7 @@ dependencies {
     testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
 }
 
-ext.pluginClassNames='com.plugin.groovyscript.GroovyScriptStepPlugin'
+ext.pluginClassNames='com.plugin.groovyscript.GroovyScriptStepPlugin,com.plugin.groovyscript.GroovyScriptNodeStepPlugin'
 jar {
     manifest {
         attributes 'Rundeck-Plugin-Classnames': pluginClassNames
