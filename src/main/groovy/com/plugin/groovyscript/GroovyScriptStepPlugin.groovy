@@ -52,7 +52,6 @@ public class GroovyScriptStepPlugin implements StepPlugin {
                                                                                                       StepException{
         def sharedData = new Binding()
         sharedData.setProperty("context",context)
-        sharedData.setProperty("configuration",configuration)
 
         def gs = new GroovyShell(sharedData)
         try {

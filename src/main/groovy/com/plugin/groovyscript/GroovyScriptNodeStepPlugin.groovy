@@ -65,7 +65,6 @@ class GroovyScriptNodeStepPlugin implements NodeStepPlugin {
 
         def sharedData = new Binding()
         sharedData.setProperty("context",context)
-        sharedData.setProperty("configuration",configuration)
         sharedData.setProperty("node",entry)
 
         def gs = new GroovyShell(sharedData)

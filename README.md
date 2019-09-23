@@ -24,7 +24,6 @@ This means you have access to classes that are on the Rundeck classpath.
 Two variables are passed as binding variables to your script.
 
 ```
-configuration : Map<String,Object> - the configuration of the plugin
 context : PluginStepContext - the context object passed to the plugin
 ```
 
