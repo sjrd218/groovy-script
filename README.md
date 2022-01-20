@@ -4,37 +4,43 @@ This plugin bundle contains a Rundeck workflow step plugin and a node step plugi
 
 ## Build and install
 
-#### Build
+### Build
 
 ./gradlew build
 
-#### Install into Rundeck
+### Install into Rundeck
 
 cp build/libs/groovy-script-0.1.0.jar $RD_BASE/libext
 
 ## Usage
 
+When adding a Groovy Script step, an ACE editor with Groovy syntax highlighting 
+will allow  you to enter your Groovy script.  Note that the classpath that the 
+script runs under is inherited from the context invoking the plugin (i.e., Rundeck itself).
+This means you have access to any classes that are on the Rundeck classpath.  This
+can be immensely useful--and also a security consideration.
+
+If your Groovy script fails, a rather terse `Groovy script failed` message is
+provided. You can re-run the job with debugging turned on to receive the full 
+stacktrace indicating why the script failed.
+
+### Usage - Workflow Step
+
 Add a workflow step using this plugin - `Groovy Script`.
 
-An ACE editor with groovy syntax highlighting allows you to enter your Groovy script.
-
-The classpath that the script runs with is inherited from the Classpath that invokes the plugin.
-This means you have access to classes that are on the Rundeck classpath.
-
-Two variables are passed as binding variables to your script.
+The following variable is passed to your script:
 
 ```
 context : PluginStepContext - the context object passed to the plugin
 ```
 
-If the groovy script you write fails your step will fail
-with a `Groovy script failed` message. Re-run the job with debugging turned
-on and you will get the full stacktrace detailing why the script failed.
-
-### Node Step Plugin
+### Usage - Workflow Node Step
 
 Add a workflow node step using this plugin - `Groovy Script Node Step`.
 
-The node step plugin also contains the following variable:
+The following variables will be passed to your script:
 
-```node : INodeEntry - the current node for which the script is executing```
+```
+node : INodeEntry - the current node for which the script is executing
+context : PluginStepContext - the context object passed to the plugin
+```
